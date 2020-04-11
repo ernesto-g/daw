@@ -1,0 +1,65 @@
+Instalacion APTITUDE
+sudo apt-get install aptitude
+
+Instalacion NODEJS
+sudo aptitude install curl
+sudo curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo aptitude install nodejs
+node -v
+npm -v
+
+
+Instalacion TYPESCRIPT
+sudo npm install -g typescript
+
+
+Instalacion VISUAL STUDIO CODE
+Bajar .deb de https://code.visualstudio.com
+sudo dpkg -i code_1.33.1-1554971066_amd64.deb
+
+Instalacion GIT
+sudo aptitude install git
+
+
+
+
+
+Instalacion SERVER HTTP estatico
+sudo npm install http-server -g
+
+Ejercutar server estatico http:
+http-server path -c-1
+
+
+Instalar PHP
+sudo aptitude install php7.0
+
+Ejecutar server PHP local:
+php -S localhost:8000
+
+
+Instalar MySQL y phpMySQL
+
+sudo aptitude install mysql-server
+sudo aptitude install mysql-client
+sudo aptitude install php-mysql
+
+
+Instalar PHPMyAdmin
+
+Bajar zip de de https://www.phpmyadmin.net/downloads/
+descomprimir en algun directorio
+
+ejecutar un servidor web dentro de la carpeta de phpmyadmin para poder acceder desde el browser
+php -S localhost:8080
+luego acceder con localhost:8080
+Loguearse con root y el pass ingresado al instalar mysql
+
+
+
+
+
+
+
+
+

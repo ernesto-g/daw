@@ -1,0 +1,47 @@
+# Version of docker-compose (last 3.7)
+version: "2.0"
+
+# Create the app services
+services:
+
+  # Create the service for DB
+  mysql-server:
+    image: "mysql:5.7"
+    restart: always
+    volumes:
+      - ./database:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: userpass
+    networks:
+      - net-web-app
+
+  # Create service for php app (localhost:8081)
+  webapp:
+    image: abassi/php-server:latest
+    restart: always
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8081:8080"
+    depends_on:
+      - mysql-server
+    networks:
+      - net-web-app
+
+  # Create PHPMyAdmin service (localhost:8090)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mysql-server
+    ports:
+      - "8082:80"
+    depends_on:
+      - mysql-server
+    networks:
+      - net-web-app
+
+# Create network called web with driver bridge
+networks:
+  net-web-app:
+    driver: bridge
