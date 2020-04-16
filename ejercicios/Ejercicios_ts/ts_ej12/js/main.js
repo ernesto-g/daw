@@ -60,7 +60,7 @@ var Main = /** @class */ (function () {
         var sw = this.myf.getElementByEvent(evt);
         console.log("click en device:" + sw.id);
         var data = { "id": sw.id, "state": this.view.getSwitchStateById(sw.id) };
-        this.myf.requestPOST("device.php", data, this);
+        this.myf.requestPOST("cgi-bin/device.py", data, this);
     };
     Main.prototype.handleGETResponse = function (status, response) {
         if (status == 200) {

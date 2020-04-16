@@ -82,7 +82,7 @@ class Main implements GETResponseListener, EventListenerObject, POSTResponseList
         console.log("click en device:"+sw.id);
 
         let data:object = {"id":sw.id,"state":this.view.getSwitchStateById(sw.id)};
-        this.myf.requestPOST("device.php",data,this);
+        this.myf.requestPOST("cgi-bin/device.py",data,this);
     }
 
     handleGETResponse(status:number,response:string):void{
