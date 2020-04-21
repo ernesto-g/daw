@@ -52,12 +52,6 @@ class MyFramework{
 
     requestPOST(url:string,data:object,listener:POSTResponseListener):void
     {
-        let formData:FormData = new FormData();
-
-        for(let key in data) {
-            formData.append(key, data[key]);
-        }
-
         let xhr = new XMLHttpRequest();
 
         xhr.onreadystatechange = function()
@@ -76,7 +70,8 @@ class MyFramework{
         };
 
         xhr.open("POST", url);
-        xhr.send(formData);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.send(JSON.stringify(data));
     }
 
 }

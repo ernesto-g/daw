@@ -80,6 +80,19 @@ Para detenerlo, ejecutar:
 $ docker stop php-server
 ```
 
+# Servidor de NodeJS con MySQL
+
+Ejecutar previamente el script que levanta el motor de la base de datos.Luego copiar "serve_node_app_net.sh" a la carpeta con el sitio web (donde está index.html), acceder a dicho directorio y ejecutar:
+
+```sh
+./serve_node_app_net.sh . ws/index.js 8000 mysql-net
+```
+
+Siendo "." el directorio donde estan los archivos del frontend y "ws" donde están los archivos de backend.
+El puerto 8000 es el que debe usarse en el navegador e internamente el codigo de node debe usar el puerto 3000
+Para que esto funcione se debe iniciar previamente el container de red y mysql.
+ 
+
 # Correr todo con Docker compose
 
 Se requiere tener instalado Docker compose. Copiar el archivo "docker-compose.yml" en la raiz del sitio web. 

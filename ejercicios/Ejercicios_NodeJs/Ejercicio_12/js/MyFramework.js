@@ -1,21 +1,19 @@
-var MyFramework = /** @class */ (function () {
-    function MyFramework() {
-    }
+class MyFramework {
     /**
      * getElementById: Busca un elemento del DOM por su ID
      * @param id : String con el id a buscar
      * @returns : Objeto HTMLElement encontrado
      */
-    MyFramework.prototype.getElementById = function (id) {
-        var el;
+    getElementById(id) {
+        let el;
         el = document.getElementById(id);
         return el;
-    };
-    MyFramework.prototype.getElementByEvent = function (evt) {
+    }
+    getElementByEvent(evt) {
         return evt.target;
-    };
-    MyFramework.prototype.requestGET = function (url, listener) {
-        var xhr;
+    }
+    requestGET(url, listener) {
+        let xhr;
         xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
@@ -29,13 +27,9 @@ var MyFramework = /** @class */ (function () {
         };
         xhr.open('GET', url, true);
         xhr.send(null);
-    };
-    MyFramework.prototype.requestPOST = function (url, data, listener) {
-        var formData = new FormData();
-        for (var key in data) {
-            formData.append(key, data[key]);
-        }
-        var xhr = new XMLHttpRequest();
+    }
+    requestPOST(url, data, listener) {
+        let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
                 if (xhr.status == 200) {
@@ -47,7 +41,7 @@ var MyFramework = /** @class */ (function () {
             }
         };
         xhr.open("POST", url);
-        xhr.send(formData);
-    };
-    return MyFramework;
-}());
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.send(JSON.stringify(data));
+    }
+}

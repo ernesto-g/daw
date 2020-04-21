@@ -1,13 +1,13 @@
-var ViewMainPage = /** @class */ (function () {
-    function ViewMainPage(myf) {
+class ViewMainPage {
+    constructor(myf) {
         this.myf = myf;
     }
-    ViewMainPage.prototype.showDevices = function (list) {
+    showDevices(list) {
         // cargo la lista de objetos en el DOM
-        var devicesUl = this.myf.getElementById("devicesList");
-        var items = "";
-        for (var i in list) {
-            var checkedStr = "";
+        let devicesUl = this.myf.getElementById("devicesList");
+        let items = "";
+        for (let i in list) {
+            let checkedStr = "";
             if (list[i].state == "1")
                 checkedStr = "checked";
             switch (list[i].type) {
@@ -46,47 +46,43 @@ var ViewMainPage = /** @class */ (function () {
             }
         }
         devicesUl.innerHTML = items;
-    };
-    ViewMainPage.prototype.getSwitchStateById = function (id) {
-        var el = this.myf.getElementById(id);
-        return el.checked;
-    };
-    return ViewMainPage;
-}());
-var Main = /** @class */ (function () {
-    function Main() {
     }
-    Main.prototype.handleEvent = function (evt) {
-        var sw = this.myf.getElementByEvent(evt);
+    getSwitchStateById(id) {
+        let el = this.myf.getElementById(id);
+        return el.checked;
+    }
+}
+class Main {
+    handleEvent(evt) {
+        let sw = this.myf.getElementByEvent(evt);
         console.log("click en device:" + sw.id);
-        var data = { "id": sw.id, "state": this.view.getSwitchStateById(sw.id) };
+        let data = { "id": sw.id, "state": this.view.getSwitchStateById(sw.id) };
         this.myf.requestPOST("devices", data, this);
-    };
-    Main.prototype.handleGETResponse = function (status, response) {
+    }
+    handleGETResponse(status, response) {
         if (status == 200) {
             console.log(response);
-            var data = JSON.parse(response);
+            let data = JSON.parse(response);
             console.log(data);
             this.view.showDevices(data);
-            for (var i in data) {
-                var sw = this.myf.getElementById("dev_" + data[i].id);
+            for (let i in data) {
+                let sw = this.myf.getElementById("dev_" + data[i].id);
                 sw.addEventListener("click", this);
             }
         }
-    };
-    Main.prototype.handlePOSTResponse = function (status, response) {
+    }
+    handlePOSTResponse(status, response) {
         if (status == 200) {
             console.log(response);
         }
-    };
-    Main.prototype.main = function () {
+    }
+    main() {
         this.myf = new MyFramework();
         this.view = new ViewMainPage(this.myf);
         this.myf.requestGET("devices", this);
-    };
-    return Main;
-}());
-window.onload = function () {
-    var obj = new Main();
+    }
+}
+window.onload = () => {
+    let obj = new Main();
     obj.main();
 };

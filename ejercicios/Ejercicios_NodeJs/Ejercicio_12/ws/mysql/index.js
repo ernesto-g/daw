@@ -1,9 +1,9 @@
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-    host: '127.0.0.1',
+    host: 'mysql-server',
     port: '3306',
     user: 'root',
-    password: '235711',
+    password: 'userpass',
     database: 'smart_home' //DAW
 });
 
