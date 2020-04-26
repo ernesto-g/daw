@@ -1,4 +1,4 @@
-# Desarrollo de aplicaciones Web. especialización IoT. FIUBA
+# Desarrollo de aplicaciones Web. Especialización IoT. FIUBA
 
 Ejercicios y material para la materia Desarrollo de Aplicaciones Web. FIUBA.
 
@@ -37,11 +37,11 @@ Ejercicios y material para la materia Desarrollo de Aplicaciones Web. FIUBA.
     Introducción a NodeJS
     
 # Clase 07
-    Docker: Temas avanzados
-    Dockerhub
     Lenguaje SQL
+    Utiliación de MySQL con NodeJS
     
 # Clase 08
-    Utiliación de MySQL con NodeJS
+    Docker: Temas avanzados
+    Dockerhub
     Realización y entrega de TP final
 
