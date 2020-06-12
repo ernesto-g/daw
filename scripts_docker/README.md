@@ -40,6 +40,13 @@ Para detenerlo, ejecutar:
 $ docker stop php-server
 ```
 
+# Red
+para laventar la red:
+
+```sh
+docker network create --driver bridge mysql-net
+```
+
 # Motor de base de datos
 
 Copiar "start_mysql.sh" a una carpeta llamada "docker_mysql". Acceder a dicho directorio y crear la carpeta "database". 
@@ -85,7 +92,7 @@ $ docker stop php-server
 Ejecutar previamente el script que levanta el motor de la base de datos.Luego copiar "serve_node_app_net.sh" a la carpeta con el sitio web (donde está index.html), acceder a dicho directorio y ejecutar:
 
 ```sh
-./serve_node_app_net.sh . ws/index.js 8000 mysql-net
+./serve_node_app_net.sh "$PWD" ws/index.js 8000 mysql-net
 ```
 
 Siendo "." el directorio donde estan los archivos del frontend y "ws" donde están los archivos de backend.
